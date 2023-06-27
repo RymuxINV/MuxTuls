@@ -95,7 +95,7 @@ def TCP():
               finally:
                 sock.close
      
-  def SYN
+def SYN():
       
 def randproxy():
     ip = ".".join(map(str, (random.randint(0,255)for _ in range(4))))
