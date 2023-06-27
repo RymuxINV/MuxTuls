@@ -68,11 +68,11 @@ def TCP():
 
         s.sendto(data, addr)
         
-    def TCP_BOMBA():
+def TCP_BOMBA():
  
-  def randproxy():
+def randproxy():
      ip = ".".join(map(str, (random.randint(o,255)for _ in range(4)))
-  def randport():
+def randport():
       port = random.randint(1000.9000)
       return port
       
@@ -95,7 +95,7 @@ def TCP():
               finally:
                 sock.close
      
-   def SYN():
+def SYN():
       
 def randproxy():
     ip = ".".join(map(str, (random.randint(0,255)for _ in range(4))))
