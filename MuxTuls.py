@@ -70,7 +70,7 @@ def TCP():
         
 def TCPBOMBA():
       
-     ip = str(input("IP : ")))
+     ip = str(input("IP : "))
      port = int(input("PORT : "))
      time = int(input("TIME : "))
      
